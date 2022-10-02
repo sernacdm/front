@@ -7,6 +7,8 @@ if(localStorage.getItem('userName')){
     window.location.href="login.html";
 }
 
+
+
 linkCerrarSesion.addEventListener("click",()=>{
     localStorage.removeItem('login')
     localStorage.removeItem('userName')

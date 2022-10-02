@@ -1,5 +1,6 @@
 const btnCrearCuenta = document.querySelector('#btnCrearCuenta')
 const modalCrearCuenta = document.querySelector('.modal_crear-cuenta')
+const linkMenuMovilCrearCuenta = document.querySelector('#menu-movil_link_crear-cuenta')
 const btnCrearCuentaModal = document.querySelector('.modal_crear-cuenta_btn_crear-cuenta ') 
 const btnCancelarCrearCuentaModal = document.querySelector('.modal_crear-cuenta_btn_cancelar');
 const linkModalCrearCuentaAtras = document.querySelector(".modal_crear-cuenta_volver")
@@ -11,6 +12,13 @@ const inputPassword = document.querySelector("#password") ;
 const inputRePassword = document.querySelector("#rePassword") ;
 const urlAddUser =  "http://localhost:8080/api/v1/User/AddUser"
 
+
+
+linkMenuMovilCrearCuenta.addEventListener("click",()=>{
+    modalCrearCuenta.classList.toggle('mostrarf')
+    window.onscroll = "";
+    fondoMenu.classList.toggle('mostrarf')
+})
 
 btnCrearCuenta.addEventListener("click", ()=>{
     console.log("vamos a crear cuenta")

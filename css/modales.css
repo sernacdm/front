@@ -392,13 +392,18 @@
     left: 0;
     top: 0;
     background-color: #fff;
+    z-index: 3;
 }
 .modal_agregar_plantacontenedor_plantas{
-    margin-top: 40px;
+    
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
+    height: 52%;
+    overflow-x: hidden;
+    overflow-y: auto;
     align-items: center;
+    margin: 20px auto;
 }
 
 .modal_agregar_planta_imagen{

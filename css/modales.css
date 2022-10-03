@@ -395,7 +395,17 @@
     z-index: 3;
 }
 .modal_agregar_plantacontenedor_plantas{
-    
+    font-family: 'Urbanist', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 52%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+    margin: 20px auto;
+}
+.modal_eliminar_plantacontenedor_plantas{
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -406,6 +416,17 @@
     margin: 20px auto;
 }
 
+.modal_eliminar_plantacontenedor_plantas .modal_agregar_plantacontenedor_planta:nth-child(even) img{
+    transform: rotate(45deg);
+    height: 100px;
+    width: 100px;
+}
+
+.btn-emilar-d{
+    font-family: 'Urbanist', sans-serif;
+    color:red;
+    border-color: red;
+}
 .modal_agregar_planta_imagen{
     width: 120px;
     height: 90px;
@@ -461,6 +482,7 @@
     left: 0;
     top: 0;
     background-color: #fff;
+    z-index: 3
 }
 .modal_eliminar_planta_info{
     margin-top: 10px;

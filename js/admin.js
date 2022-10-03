@@ -18,7 +18,10 @@ const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agreg
 const plantaEstadoSelecionadaActual  = document.querySelector('.planta_estado_selecionada_actual_slider')
 const plantaSelecionada = document.querySelector('.planta_selecionada_slider')
 const plantaTips = document.querySelector('.planta_tips_contenedor_parrafos_slider')
-
+const modalEliminarPlanta = document.querySelector('.modal_eliminar_planta')
+const btnModalEliminarPlantaConfirmar = document.querySelector('.modal_eliminar_planta_botones_eliminar')
+const btnModalEliminarPlantaCancelar = document.querySelector('.modal_recomendado_botones_cancelar')
+const modalElimnarPlantasContenedor = document.querySelector('.modal_eliminar_plantacontenedor_plantas')
 const btnModalElimarPlanta = document.querySelector(".planta_estado_selecionada_quitar")
 
 /* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
@@ -36,8 +39,83 @@ let plantasUsuarioComparar
 }
  */
 
+async function eliminarElemnto(url){
+    await fetch(url,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    }).then((response) => response.json())
+    .then((data7)=>{
+        console.log("eliminando")
+    })
+    .catch((err) => console.log(err))
+
+}
+
+
+
+async function listaEliminarPlanta(){
+   
+    await fetch("http://localhost:8080/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'),{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+    .then((response) => response.json())
+    .then((data7)=>{
+        console.log(data7)
+        ciclo = data7.data.processes
+
+        templateE=""
+        ciclo.forEach((element)=>{
+            templateE += `
+            <div class="modal_agregar_plantacontenedor_planta">
+                <img id="rImagen${element.plant.id}" class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
+                <label class="modal_agregar_planta_texto">${element.plant.name}</label>
+                <button  class="btn-emilar-d" name="" id="${element.id}" value="${element.id}">X</button>
+            </div>
+        `
+        })
+        
+        modalElimnarPlantasContenedor.innerHTML = templateE 
+
+        ciclo.forEach((element)=>{
+            imagenp=document.querySelector('#rImagen'+element.plant.id)
+            imagenp.src="../images/admin/plantas/"+element.plant.id+".png"
+
+            /* element.addEventListener('click',()=>{
+                console.log("le diste al elemento "+element.id)
+            }) */
+        })
+
+        botonesEliminar = document.querySelectorAll(".btn-emilar-d")
+        botonesEliminar.forEach((element)=>{
+            element.addEventListener('click',()=>{
+                element.parentNode.classList.add('nomostrar')
+                eliminarElemnto(urlEliminarPlanta+element.id)
+            })
+        })
+
+    })
+    
+
+}
+
+listaEliminarPlanta()
+
+
 btnModalElimarPlanta.addEventListener("click",()=>{
-    console.log("vamos a eliminar la planta")
+    modalEliminarPlanta.classList.toggle('mostrarf')
+    window.scrollTo(0,0)
+    window.onscroll = () => { window.scroll(0, 0); };
+})
+btnModalEliminarPlantaCancelar.addEventListener("click",()=>{
+    window.onscroll = "";
+    modalEliminarPlanta.classList.toggle('mostrarf')
 })
 
 async function agregarPlanta(url,idPlanta){

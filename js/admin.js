@@ -18,8 +18,23 @@ const plantaTips = document.querySelector('.planta_tips_contenedor_parrafos_slid
 /* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
 const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_parrafo")
  */
+
+const bntModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_planta_btn_confirmar")
 let plantas
 let idUsuario
+
+
+bntModalAgregarPlantaConfirmar.addEventListener("click",()=>{
+
+    let todosLosElementos = document.querySelectorAll(".modal_agregar_planta_escojida")
+    plantasAgregar = new Array()
+    todosLosElementos.forEach((element)=>{
+        if(element.checked){
+            plantasAgregar.push(elemnt.value)
+            console.log(plantasAgregar)
+        }
+    })
+})
 
 
 btnModalAgregarPlantaCancelar.addEventListener("click",()=>{
@@ -91,8 +106,9 @@ async function plantaUsuario(url){
         })
 
         template2 = ""
+        /* pasosPlanta = new Array () */
         infoUsuarioPlanta.forEach(element=>{
-
+            pasosPlanta = new Array ()
             plantaTips.innerHTML += `<div class="swiper-slide">
                 <p class="planta_tips_parrafo">${element.plant.nutritionalContribution}</p>   
             </div>`
@@ -109,27 +125,52 @@ async function plantaUsuario(url){
             }
            */
 
-            plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
-                <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
-                <div class="planta_estado_selecionada_contenedor">
-                    <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
-                    <div class="planta_estado_selecionada_decoracion">
-                        <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
-                            <div class="planta_estado_selecionada_decoracion_circulo">
+            if(element.germination==true){
+                pasosPlanta.push("germinacion")
+            }
+            if(element.irrigation==true){
+                pasosPlanta.push("irrigacion")
+            }
+            if(element.transplanted==true){
+                pasosPlanta.push("transplantado")
+            }
+            if(element.sown==true){
+                pasosPlanta.push("sembrado")
+            }
+            if(element.harvest==true){
+                pasosPlanta.push("​​cosecha")
+            }
+            console.log(pasosPlanta)
 
-                            </div>
-                        </div>
-                        <div class="planta_estado_selecionada_decoracion_contenedor_linea">
-                            <div class="planta_estado_selecionada_decoracion_linea">
+            graficoPlanta=""
 
-                            </div>
+            pasosPlanta.map((elemen)=>{
+                graficoPlanta +=`<div class="planta_estado_selecionada_contenedor">
+                <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
+                <div class="planta_estado_selecionada_decoracion">
+                    <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
+                        <div class="planta_estado_selecionada_decoracion_circulo">
+
                         </div>
                     </div>
-                    <div class="planta_estado_selecionada_textos">
-                        <h3 class="planta_estado_selecionada_textos_titulo">titulo</h3>
-                        <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
+                    <div class="planta_estado_selecionada_decoracion_contenedor_linea">
+                        <div class="planta_estado_selecionada_decoracion_linea">
+
+                        </div>
                     </div>
                 </div>
+                <div class="planta_estado_selecionada_textos">
+                    <h3 class="planta_estado_selecionada_textos_titulo">${elemen}</h3>
+                    <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
+                </div>
+            </div>
+            ` 
+
+            })
+            
+            plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
+                <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
+                ${graficoPlanta}
             </div>`
         })
         //plantaEstadoSelecionadaActual.innerHTML = template2
@@ -181,10 +222,10 @@ async function listaPlantas(){
       
         template = ""
         plantas.forEach(element => {
-            template = template + `<div class="modal_agregar_plantacontenedor_planta">
+            template +=  `<div class="modal_agregar_plantacontenedor_planta">
                 <img class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
                 <label class="modal_agregar_planta_texto">${element['name']}</label>
-                <input type="checkbox" name="" id="" value="${element['id']}">
+                <input class="modal_agregar_planta_escojida" type="checkbox" name="" id="" value="${element['id']}">
             </div>`
         });
 

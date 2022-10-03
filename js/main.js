@@ -31,6 +31,7 @@ async function testFuncion(urlUser,datosUser){
             username.placeholder="las contraseñas no conciden";
             password.classList.toggle('error-input-movil')
             password.placeholder="las contraseñas no conciden";
+            alert("los datos con coinciden")
         }
 
     })

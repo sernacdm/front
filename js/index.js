@@ -15,6 +15,9 @@ const urlAddUser =  "http://localhost:8080/api/v1/User/AddUser"
 
 
 linkMenuMovilCrearCuenta.addEventListener("click",()=>{
+    if(localStorage.getItem('userName')){
+        window.location.href="admin.html"
+    }
     modalCrearCuenta.classList.toggle('mostrarf')
     window.onscroll = "";
     fondoMenu.classList.toggle('mostrarf')
@@ -55,6 +58,7 @@ btnCrearCuentaModal.addEventListener("click",()=>{
         inputPassword.placeholder="las contraseñas no conciden";
         inputRePassword.classList.toggle('error-input-movil')
         inputRePassword.placeholder="las contraseñas no conciden";
+        alert("las contraseñas no conciden")
 
     }else{
         

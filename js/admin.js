@@ -91,8 +91,9 @@ async function plantaUsuario(url){
         })
 
         template2 = ""
+        /* pasosPlanta = new Array () */
         infoUsuarioPlanta.forEach(element=>{
-
+            pasosPlanta = new Array ()
             plantaTips.innerHTML += `<div class="swiper-slide">
                 <p class="planta_tips_parrafo">${element.plant.nutritionalContribution}</p>   
             </div>`
@@ -109,27 +110,52 @@ async function plantaUsuario(url){
             }
            */
 
-            plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
-                <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
-                <div class="planta_estado_selecionada_contenedor">
-                    <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
-                    <div class="planta_estado_selecionada_decoracion">
-                        <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
-                            <div class="planta_estado_selecionada_decoracion_circulo">
+            if(element.germination==true){
+                pasosPlanta.push("germinacion")
+            }
+            if(element.irrigation==true){
+                pasosPlanta.push("irrigacion")
+            }
+            if(element.transplanted==true){
+                pasosPlanta.push("transplantado")
+            }
+            if(element.sown==true){
+                pasosPlanta.push("sembrado")
+            }
+            if(element.harvest==true){
+                pasosPlanta.push("​​cosecha")
+            }
+            console.log(pasosPlanta)
 
-                            </div>
-                        </div>
-                        <div class="planta_estado_selecionada_decoracion_contenedor_linea">
-                            <div class="planta_estado_selecionada_decoracion_linea">
+            graficoPlanta=""
 
-                            </div>
+            pasosPlanta.map((elemen)=>{
+                graficoPlanta +=`<div class="planta_estado_selecionada_contenedor">
+                <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
+                <div class="planta_estado_selecionada_decoracion">
+                    <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
+                        <div class="planta_estado_selecionada_decoracion_circulo">
+
                         </div>
                     </div>
-                    <div class="planta_estado_selecionada_textos">
-                        <h3 class="planta_estado_selecionada_textos_titulo">titulo</h3>
-                        <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
+                    <div class="planta_estado_selecionada_decoracion_contenedor_linea">
+                        <div class="planta_estado_selecionada_decoracion_linea">
+
+                        </div>
                     </div>
                 </div>
+                <div class="planta_estado_selecionada_textos">
+                    <h3 class="planta_estado_selecionada_textos_titulo">${elemen}</h3>
+                    <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
+                </div>
+            </div>
+            ` 
+
+            })
+            
+            plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
+                <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
+                ${graficoPlanta}
             </div>`
         })
         //plantaEstadoSelecionadaActual.innerHTML = template2

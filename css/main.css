@@ -206,7 +206,41 @@ main{
         }
 
     }    
-
+    @media only screen and (min-width:1200px){
+        .segunda{
+            display: flex;
+            flex-direction:row;
+            height: 100vh;
+        }
+        .segunda_quienes-somos,.segunda_nuestroequipo{
+            height: 100%;
+            width: 50%;
+        }
+        .segunda_quienes-somos_contenedor{
+            height: 88%;
+        }
+        .segunda_nuestroequipo_tarjeta{
+            display: flex;
+            flex-direction: row;
+            margin-bottom:10px ;
+            padding: 5px 5px;
+            justify-content: center;
+            width: 78%;
+        }
+        .segunda_nuestroequipo_tarjeta_imagen{
+            width: 18%;
+        }
+        .segunda_nuestroequipo_textos{
+            margin-left: 20px;
+        }
+        .segunda_nuestroequipo_tarjeta_nombre{
+            font-size: 20px;
+        }
+        .segunda_nuestroequipo_tarjeta_rol{
+            font-size: 18px;
+        }
+        .
+    }
 /***! tercera **/
 
 .tercera{

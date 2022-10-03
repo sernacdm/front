@@ -207,7 +207,7 @@ async function listaPlantas(){
       
         template = ""
         plantas.forEach(element => {
-            template = template + `<div class="modal_agregar_plantacontenedor_planta">
+            template +=  `<div class="modal_agregar_plantacontenedor_planta">
                 <img class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
                 <label class="modal_agregar_planta_texto">${element['name']}</label>
                 <input type="checkbox" name="" id="" value="${element['id']}">

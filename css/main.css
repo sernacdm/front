@@ -162,6 +162,11 @@ main{
     background-color: var(--color-nuestro-equipo-fondo-tarjeta);
     margin-bottom: 20px;
 }
+.segunda_nuestroequipo_textos{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 .segunda_nuestroequipo_tarjeta:nth-child(odd){
     border: var(--color-text-nuestro-equipo-azul) dashed 2px;
     background-color: var(--color-nuestro-equipo-fondo-tarjeta-par);

@@ -18,8 +18,23 @@ const plantaTips = document.querySelector('.planta_tips_contenedor_parrafos_slid
 /* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
 const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_parrafo")
  */
+
+const bntModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_planta_btn_confirmar")
 let plantas
 let idUsuario
+
+
+bntModalAgregarPlantaConfirmar.addEventListener("click",()=>{
+
+    let todosLosElementos = document.querySelectorAll(".modal_agregar_planta_escojida")
+    plantasAgregar = new Array()
+    todosLosElementos.forEach((element)=>{
+        if(element.checked){
+            plantasAgregar.push(elemnt.value)
+            console.log(plantasAgregar)
+        }
+    })
+})
 
 
 btnModalAgregarPlantaCancelar.addEventListener("click",()=>{
@@ -210,7 +225,7 @@ async function listaPlantas(){
             template +=  `<div class="modal_agregar_plantacontenedor_planta">
                 <img class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
                 <label class="modal_agregar_planta_texto">${element['name']}</label>
-                <input type="checkbox" name="" id="" value="${element['id']}">
+                <input class="modal_agregar_planta_escojida" type="checkbox" name="" id="" value="${element['id']}">
             </div>`
         });
 

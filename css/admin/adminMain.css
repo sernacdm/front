@@ -38,9 +38,10 @@
 .planta_tips_contenedor_titulo{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: var(--color-verde-oscuro-1) solid 2px;
+    
 }
 .planta_tips_titulo{
     text-transform: uppercase;

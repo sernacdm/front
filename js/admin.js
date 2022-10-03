@@ -14,6 +14,7 @@ const btnModalAgregarPlantaCancelar = document.querySelector('#modal_agregar_pla
 const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agregar_plantacontenedor_plantas')
 const plantaEstadoSelecionadaActual  = document.querySelector('.planta_estado_selecionada_actual_slider')
 const plantaSelecionada = document.querySelector('.planta_selecionada_slider')
+const plantaTips = document.querySelector('.planta_tips_contenedor_parrafos_slider')
 /* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
 const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_parrafo")
  */
@@ -84,6 +85,10 @@ async function plantaUsuario(url){
         console.log(data3.data.processes)
         template2 = ""
         infoUsuarioPlanta.forEach(element=>{
+
+            plantaTips.innerHTML += `<div class="swiper-slide">
+                <p>${element.plant.nutritionalContribution}</p>   
+            </div>`
             plantaSelecionada.innerHTML += `<div class="swiper-slide">
                 <h2 class="planta_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
                 <p class="planta_selecionada_parrafo">
@@ -173,6 +178,17 @@ setTimeout(()=>{
     });
 
     var swiper2 = new Swiper(".mySwiper2", {
+        pagination: {
+          el: ".planta_estado_selecionada_control_posicion",
+          type: "fraction",
+        },
+        navigation: {
+          nextEl: ".planta_estado_selecionada_control_siguiente",
+          prevEl: ".planta_estado_selecionada_control_atras",
+        },
+    });
+
+    var swiper3 = new Swiper(".mySwiper3", {
         pagination: {
           el: ".planta_estado_selecionada_control_posicion",
           type: "fraction",

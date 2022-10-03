@@ -1,6 +1,8 @@
 const nombreUsuario = document.querySelector("#nombreUsuario") 
 const linkCerrarSesion = document.querySelector("#linkCerrarSesion")
 const urlListaPlantas = "http://localhost:8080/api/v1/Plant/Plants"
+const urlIdUsuario= "http://localhost:8080/api/v1/User/UserByUsername/"+localStorage.getItem('userName')
+
 const btnPlantaEstadoSelecionadaOpciones = document.querySelector(".planta_estado_selecionada_opciones")
 const btnPlantaEstadoSelecionadaVer = document.querySelector(".planta_estado_selecionada_ver")
 const btnPlantaEstadoSelecionadaQuitar = document.querySelector(".planta_estado_selecionada_quitar")
@@ -10,7 +12,7 @@ const btnModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_pl
 const btnModalAgregarPlantaCancelar = document.querySelector('#modal_agregar_planta_btn_cancelar');
 const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agregar_plantacontenedor_plantas')
 let plantas
-
+let idUsuario
 
 
 btnModalAgregarPlantaCancelar.addEventListener("click",()=>{
@@ -61,6 +63,50 @@ btnPlantaEstadoSelecionadaOpciones.addEventListener("click",()=>{
 
 })
 
+
+async function plantaUsuario(url){
+    await fetch(url,{
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+    .then((response) => response.json())
+    .then((data3)=>{
+        console.log(data3.data.processes);
+    })
+    .catch((err) => console.log(err))
+}
+
+
+
+async function plantasUsuario(){
+    await fetch(urlIdUsuario,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+    .then((response) => response.json())
+    .then((data2)=>{
+        idUsuario = data2.data.id
+        let urlPlantasUsuario = "http://localhost:8080/api/v1/Process/ProcessesByUser/"+idUsuario
+        console.log(urlPlantasUsuario)
+        plantaUsuario(urlPlantasUsuario)
+        
+    })
+    .catch((err) => console.log(err))
+
+    
+
+}
+
+plantasUsuario()
+
+
+
 async function listaPlantas(){
 
     await fetch(urlListaPlantas,{
@@ -72,9 +118,9 @@ async function listaPlantas(){
     })
     .then((response) => response.json())
     .then((data)=> {
-        console.log(data.data)
+       
         plantas = data.data
-        console.log(plantas.length)
+      
         template = ""
         plantas.forEach(element => {
             template = template + `<div class="modal_agregar_plantacontenedor_planta">

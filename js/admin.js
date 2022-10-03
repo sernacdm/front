@@ -3,6 +3,9 @@ const linkCerrarSesion = document.querySelector("#linkCerrarSesion")
 
 const urlListaPlantas = "http://localhost:8080/api/v1/Plant/Plants"
 const urlIdUsuario= "http://localhost:8080/api/v1/User/UserByUsername/"+localStorage.getItem('userName')
+const urlAddPlanta = "http://localhost:8080/api/v1/Process/AddProcess"
+const urlEliminarPlanta ="http://localhost:8080/api/v1/Process/DeleteProcess/"
+
 
 const btnPlantaEstadoSelecionadaOpciones = document.querySelector(".planta_estado_selecionada_opciones")
 const btnPlantaEstadoSelecionadaVer = document.querySelector(".planta_estado_selecionada_ver")
@@ -22,18 +25,46 @@ const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_par
 const bntModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_planta_btn_confirmar")
 let plantas
 let idUsuario
+let plantasUsuarioComparar
 
+
+/* async function eliminarPlanta(){
+    await fetch(url,)
+}
+ */
+
+
+async function agregarPlanta(url,idPlanta){
+
+    userId=localStorage.getItem('userId')
+    plantId=idPlanta
+
+    datosUser = {
+        plantId : plantId,
+        userId :  userId
+    }
+    
+    
+    await fetch(url,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(datosUser)   
+    })
+    .then((response) => response.json())
+    .then((data4)=>{
+        if(data4.data==true){
+            alert("planta agregada con exito!")
+        }
+        
+    })
+    .catch((err) => console.log(err))
+}
 
 bntModalAgregarPlantaConfirmar.addEventListener("click",()=>{
-
-    let todosLosElementos = document.querySelectorAll(".modal_agregar_planta_escojida")
-    plantasAgregar = new Array()
-    todosLosElementos.forEach((element)=>{
-        if(element.checked){
-            plantasAgregar.push(elemnt.value)
-            console.log(plantasAgregar)
-        }
-    })
+    window.location.href="admin.html";
 })
 
 
@@ -85,6 +116,29 @@ btnPlantaEstadoSelecionadaOpciones.addEventListener("click",()=>{
 
 })
 
+async function plantasConsultar(url){
+    await fetch(url,{
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+
+    })
+    .then((response) => response.json())
+    .then((data5)=>{
+        data5.data.processes.map((element)=>{
+            /* console.log(element.plant.id)
+            document.querySelector("#plant1"+element.plant.id).classList.add("nomostrar") */
+            console.log(element.plant.id)
+            test = document.querySelector("#plant"+element.plant.id)
+            test.classList.add("nomostrar")
+        })
+    })
+    .catch((err) => console.log(err))
+}
+
+
 
 async function plantaUsuario(url){
     await fetch(url,{
@@ -97,8 +151,8 @@ async function plantaUsuario(url){
     .then((response) => response.json())
     .then((data3)=>{
         infoUsuarioPlanta = data3.data.processes
-        console.log(data3.data.processes)
-        
+
+        localStorage.setItem("userId",data3.data.id)
         infoUsuarioPlanta.forEach(element=>{
             if(element.germination==true){
                 console.log("tenemos  uno")
@@ -140,7 +194,7 @@ async function plantaUsuario(url){
             if(element.harvest==true){
                 pasosPlanta.push("​​cosecha")
             }
-            console.log(pasosPlanta)
+            
 
             graficoPlanta=""
 
@@ -192,7 +246,8 @@ async function plantasUsuario(){
     .then((data2)=>{
         idUsuario = data2.data.id
         let urlPlantasUsuario = "http://localhost:8080/api/v1/Process/ProcessesByUser/"+idUsuario
-        console.log(urlPlantasUsuario)
+       /*  console.log(urlPlantasUsuario) */
+      
         plantaUsuario(urlPlantasUsuario)
         
     })
@@ -203,6 +258,10 @@ async function plantasUsuario(){
 }
 
 plantasUsuario()
+
+
+
+
 
 
 
@@ -219,18 +278,32 @@ async function listaPlantas(){
     .then((data)=> {
        
         plantas = data.data
-      
+        console.log(data.data)
         template = ""
         plantas.forEach(element => {
-            template +=  `<div class="modal_agregar_plantacontenedor_planta">
-                <img class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
+            template +=  `<div id="plant${element['id']}" class="modal_agregar_plantacontenedor_planta">
+                <img class="modal_agregar_planta_imagen" src="../images/admin/plantas/${element['id']}.png" alt="">
                 <label class="modal_agregar_planta_texto">${element['name']}</label>
-                <input class="modal_agregar_planta_escojida" type="checkbox" name="" id="" value="${element['id']}">
+                <button class="modal_agregar_planta_escojida" type="button" value="${element['id']}">+</button>
             </div>`
         });
 
-
         modalAgregarPlantaContenedorPlantas.innerHTML = template
+
+        let plantaParaAgregar = document.querySelectorAll('.modal_agregar_planta_escojida')
+        plantaParaAgregar.forEach((element)=>{
+            element.addEventListener("click", ()=>{
+                console.log(`diste click en el ${element.value}`)
+                element.parentNode.classList.add('nomostrar')
+                agregarPlanta(urlAddPlanta,element.value)
+                
+            }) 
+           
+        })
+
+         
+        plantasConsultar( "http://localhost:8080/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'))
+
         /* modalAgregarPlantaContenedorPlantas.innerHTML =;   */
     })
     .catch((err) => console.log(err))

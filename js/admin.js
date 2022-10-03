@@ -18,6 +18,9 @@ const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agreg
 const plantaEstadoSelecionadaActual  = document.querySelector('.planta_estado_selecionada_actual_slider')
 const plantaSelecionada = document.querySelector('.planta_selecionada_slider')
 const plantaTips = document.querySelector('.planta_tips_contenedor_parrafos_slider')
+
+const btnModalElimarPlanta = document.querySelector(".planta_estado_selecionada_quitar")
+
 /* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
 const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_parrafo")
  */
@@ -33,6 +36,9 @@ let plantasUsuarioComparar
 }
  */
 
+btnModalElimarPlanta.addEventListener("click",()=>{
+    console.log("vamos a eliminar la planta")
+})
 
 async function agregarPlanta(url,idPlanta){
 
@@ -56,7 +62,7 @@ async function agregarPlanta(url,idPlanta){
     .then((response) => response.json())
     .then((data4)=>{
         if(data4.data==true){
-            alert("planta agregada con exito!")
+            alert("planta agregada con exito! actuliza la pagina para ver los cambios")
         }
         
     })

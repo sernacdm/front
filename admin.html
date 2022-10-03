@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="vendor/fontello/css/fontello.css">
     <script src="js/main.js" defer></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
     <script src="js/admin.js" defer></script>
+    
 </head>
 <body>
 <header>
@@ -42,12 +46,22 @@
     <section class="planta_selecionada_imagen nomostrar">
         <img src="" alt="">
     </section>
-    <section class="planta_selecionada">
-        <h2 class="planta_selecionada_titulo titulos-movil-700">TOMATE</h2>
-        <p class="planta_selecionada_parrafo">
-            Ask CDCR San Quintin State Prison 2008. We installed Purex dispensers th roughout the prison to combat diseases…and it was a Roaring Success (as in Roaring Drunk) I mean we had Long lines of prisoners fist fighting to use them.
-        </p>
-        <div class="planta_selecionada_contenedor_control">
+    <section class="planta_selecionada swiper mySwiper2">
+        <div class="planta_selecionada_slider swiper-wrapper">
+            <!-- <div class="swiper-slide">
+                <h2 class="planta_selecionada_titulo titulos-movil-700">TOMATE</h2>
+                <p class="planta_selecionada_parrafo">
+                    Ask CDCR San Quintin State Prison 2008. We installed Purex dispensers th roughout the prison to combat diseases…and it was a Roaring Success (as in Roaring Drunk) I mean we had Long lines of prisoners fist fighting to use them.
+                </p>
+            </div>
+            <div class="swiper-slide">
+                <h2 class="planta_selecionada_titulo titulos-movil-700">TOMATE 2</h2>
+                <p class="planta_selecionada_parrafo">
+                    Ask CDCR San Quintin State Prison 2008. We installed Purex dispensers th roughout the prison to combat diseases…and it was a Roaring Success (as in Roaring Drunk) I mean we had Long lines of prisoners fist fighting to use them.
+                </p>
+            </div> -->
+        </div>  
+        <!-- <div class="planta_selecionada_contenedor_control">
             <div class="planta_selecionada_contenedor_control_atras">
                 <i class="icon-siguiente planta_selecionada_siguiente"></i>
             </div>
@@ -57,22 +71,25 @@
             <div class="planta_selecionada_contenedor_control_siguiente">
                 <i class="icon-atras planta_selecionada_atras"></i>
             </div>
-        </div>
+        </div> -->
     </section>
     <section class="planta_tips">
         <div class="planta_tips_contenedor_titulo">
-            <i class="icon-atras planta_tips_atras"></i>
+            <!-- <i class="icon-atras planta_tips_atras"></i> -->
             <h2 class="planta_tips_titulo titulos-movil-700">información nutricional</h2>
 
-            <i class="icon-siguiente planta_tips_siguiente"></i>
+            <!-- <i class="icon-siguiente planta_tips_siguiente"></i> -->
         </div>
-        <div class="planta_tips_contenedor_parrafos">
-            <p class="planta_tips_parrafo">
+        <div class="planta_tips_contenedor_parrafos swiper mySwiper3">
+            <div class="planta_tips_contenedor_parrafos_slider swiper-wrapper">
+
+            </div>
+            <!-- <p class="planta_tips_parrafo">
                 Ask CDCR San Quintin State Prison 2008. We installed Purex dispensers throughout the prison to combat diseases…and it was a Roaring Success (as in Roaring Drunk) I mean we had Long lines of prisoners fist fighting to use them.
-            </p>
+            </p> -->
 
         </div>
-        <div class="planta_tips_posicion">
+        <!-- <div class="planta_tips_posicion">
             <span class="planta_tips_posiciones"></span>
             <span class="planta_tips_posiciones"></span>
             <span class="planta_tips_posiciones"></span>
@@ -80,12 +97,15 @@
             <span class="planta_tips_posiciones planta_tips_posiciones-activa"></span>
             <span class="planta_tips_posiciones"></span>
             <span class="planta_tips_posiciones"></span>
-        </div>
+        </div> -->
     </section>
     <section class="planta_estado_selecionada">
-        <div class="planta_estado_selecionada_actual">
-            <h2 class="planta_estado_selecionada_titulo titulos-movil-700"> TOMATE</h2>
-            <div class="planta_estado_selecionada_paso">
+        <div class="planta_estado_selecionada_actual swiper mySwiper">
+            <div class="planta_estado_selecionada_actual_slider swiper-wrapper">
+
+            </div>
+            <!-- <h2 class="planta_estado_selecionada_titulo titulos-movil-700"> TOMATE</h2> -->
+            <!-- <div class="planta_estado_selecionada_paso">
                 <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
                 <div class="planta_estado_selecionada_decoracion">
                     <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
@@ -103,14 +123,14 @@
                     <h3 class="planta_estado_selecionada_textos_titulo">Conseguir la semilla</h3>
                     <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="planta_estado_selecionada_control">
             <div class="planta_estado_selecionada_control_atras">
                 <i class="icon-siguiente"></i>
             </div>
             <div class="planta_estado_selecionada_control_posicion">
-                2/5
+                
             </div>
             <div class="planta_estado_selecionada_control_siguiente">
                 <i class="icon-atras"></i>
@@ -123,16 +143,42 @@
             <button class="icon-opciones-admin planta_estado_selecionada_mas" >+</button>
         </div>
     </section>
-    <section class="planta_carusel-informativo">
-        <div class="planta_carusel-informativo-imagenes">
-            <img class="planta_carusel_imagen" src="images/admin/banner1.png" alt="">
+    <section class="planta_carusel-informativo swiper mySwiper4">
+        <div class="planta_carusel-informativo-imagenes swiper-wrapper">
+            <img 
+                class="planta_carusel_imagen swiper-slide" 
+                alt="" 
+                srcset="images/admin/banners/baner1m.png 300w, 
+                images/admin/banners/baner1t.png 800w,
+                images/admin/banners/baner1d.png 1024w">
+            <img class="planta_carusel_imagen swiper-slide" 
+                alt=""
+                srcset="images/admin/banners/baner2m.png 300w, 
+                images/admin/banners/baner2t.png 800w,
+                images/admin/banners/baner2d.png 1024w">
+            <img class="planta_carusel_imagen swiper-slide" 
+                alt=""
+                srcset="images/admin/banners/baner3m.png 300w, 
+                images/admin/banners/baner3t.png 800w,
+                images/admin/banners/baner3d.png 1024w">
+            <img class="planta_carusel_imagen swiper-slide" 
+                alt=""
+                srcset="images/admin/banners/baner4m.png 300w, 
+                images/admin/banners/baner4t.png 800w,
+                images/admin/banners/baner4d.png 1024w">
+                <img class="planta_carusel_imagen swiper-slide" 
+                alt=""
+                srcset="images/admin/banners/baner5m.png 300w, 
+                images/admin/banners/baner5t.png 800w,
+                images/admin/banners/baner5d.png 1024w">    
+            
         </div>
         <div class="planta_carusel-informativo_control">
             <div class="planta_carusel-informativo_control_atras">
                 <i class="icon-siguiente"></i>
             </div>
             <div class="planta_carusel-informativo_control_posicion">
-                1/5
+               
             </div>
             <div class="planta_carusel-informativo_control_siguiente">
                 <i class="icon-atras"></i>

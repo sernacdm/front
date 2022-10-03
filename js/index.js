@@ -58,6 +58,7 @@ btnCrearCuentaModal.addEventListener("click",()=>{
         inputPassword.placeholder="las contraseñas no conciden";
         inputRePassword.classList.toggle('error-input-movil')
         inputRePassword.placeholder="las contraseñas no conciden";
+        alert("las contraseñas no conciden")
 
     }else{
         

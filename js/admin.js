@@ -96,8 +96,27 @@ async function plantaUsuario(url){
                 </p>
             </div>` 
             plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
-                <h2>${element.plant.name}</h2  
-            <div>`
+                <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
+                <div class="planta_estado_selecionada_contenedor">
+                    <h3 class="planta_estado_selecionada_paso_fecha">26/09</h3>
+                    <div class="planta_estado_selecionada_decoracion">
+                        <div class="planta_estado_selecionada_decoracion_contenedor_circulo">
+                            <div class="planta_estado_selecionada_decoracion_circulo">
+
+                            </div>
+                        </div>
+                        <div class="planta_estado_selecionada_decoracion_contenedor_linea">
+                            <div class="planta_estado_selecionada_decoracion_linea">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="planta_estado_selecionada_textos">
+                        <h3 class="planta_estado_selecionada_textos_titulo">Conseguir la semilla</h3>
+                        <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
+                    </div>
+                </div>
+            </div>`
         })
         //plantaEstadoSelecionadaActual.innerHTML = template2
     })

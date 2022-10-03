@@ -81,6 +81,7 @@
 
 /** planta_estado_selecionada **/
 
+
 .planta_estado_selecionada{
     margin: 20px 2.5%;
     border: var(--color-verde-oscuro-1) solid 1px;
@@ -91,6 +92,10 @@
     width: 95%;
     position: relative;
     overflow: hidden;
+}
+.planta_estado_selecionada_contenedor{
+    display: flex;
+    flex-direction: row;
 }
 .planta_estado_selecionada_actual{
     width: 100%;
@@ -104,8 +109,8 @@
 }
 .planta_estado_selecionada_paso{
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     align-self: center;
     width: 100%;
     height: 100%;
@@ -121,8 +126,13 @@
     border-radius: 5px;
     letter-spacing: 1px;
     margin: 0;
+    height: fit-content;
 }
+.planta_estado_selecionada_textos{
+    display: flex;
+    flex-direction: column;
 
+}
 .planta_estado_selecionada_textos_titulo{
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;

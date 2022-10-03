@@ -1,5 +1,6 @@
 const nombreUsuario = document.querySelector("#nombreUsuario") 
 const linkCerrarSesion = document.querySelector("#linkCerrarSesion")
+
 const urlListaPlantas = "http://localhost:8080/api/v1/Plant/Plants"
 const urlIdUsuario= "http://localhost:8080/api/v1/User/UserByUsername/"+localStorage.getItem('userName')
 
@@ -11,6 +12,11 @@ const modalAgregarPlanta = document.querySelector(".modal_agregar_planta")
 const btnModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_planta_btn_confirmar");
 const btnModalAgregarPlantaCancelar = document.querySelector('#modal_agregar_planta_btn_cancelar');
 const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agregar_plantacontenedor_plantas')
+const plantaEstadoSelecionadaActual  = document.querySelector('.planta_estado_selecionada_actual_slider')
+const plantaSelecionada = document.querySelector('.planta_selecionada_slider')
+/* const tituloPlantaSelecionada = document.querySelector(".planta_selecionada_titulo")
+const parrafoPlantaSelecionada = document.querySelector(".planta_selecionada_parrafo")
+ */
 let plantas
 let idUsuario
 
@@ -74,7 +80,21 @@ async function plantaUsuario(url){
     })
     .then((response) => response.json())
     .then((data3)=>{
-        console.log(data3.data.processes);
+        infoUsuarioPlanta = data3.data.processes
+        console.log(data3.data.processes)
+        template2 = ""
+        infoUsuarioPlanta.forEach(element=>{
+            plantaSelecionada.innerHTML += `<div class="swiper-slide">
+                <h2 class="planta_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
+                <p class="planta_selecionada_parrafo">
+                ${element.plant.generalInformation}
+                </p>
+            </div>` 
+            plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
+                <h2>${element.plant.name}</h2  
+            <div>`
+        })
+        //plantaEstadoSelecionadaActual.innerHTML = template2
     })
     .catch((err) => console.log(err))
 }
@@ -140,4 +160,28 @@ async function listaPlantas(){
 
 listaPlantas()
 
+setTimeout(()=>{
+    var swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".planta_estado_selecionada_control_posicion",
+          type: "fraction",
+        },
+        navigation: {
+          nextEl: ".planta_estado_selecionada_control_siguiente",
+          prevEl: ".planta_estado_selecionada_control_atras",
+        },
+    });
+
+    var swiper2 = new Swiper(".mySwiper2", {
+        pagination: {
+          el: ".planta_estado_selecionada_control_posicion",
+          type: "fraction",
+        },
+        navigation: {
+          nextEl: ".planta_estado_selecionada_control_siguiente",
+          prevEl: ".planta_estado_selecionada_control_atras",
+        },
+    });
+    
+},5000)
 

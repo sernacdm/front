@@ -87,12 +87,15 @@
     box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
+    width: 95%;
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .planta_estado_selecionada_actual{
+    width: 100%;
+    min-height: 350px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .planta_estado_selecionada_titulo{
     font-size: 40px;
@@ -103,6 +106,7 @@
     flex-direction: row;
     align-items: flex-start;
     align-self: center;
+    width: 100%;
     height: 100%;
 }
 
@@ -185,6 +189,7 @@
     flex-direction: row;
     margin-bottom: 20px;
     margin-left: 20px;
+    width: 25%;
 }
 .planta_estado_selecionada_control_atras,.planta_estado_selecionada_control_siguiente{
     color: var(--color-verde-oscuro-1);
@@ -196,6 +201,7 @@
     color: var(--color-verde-oscuro-1);
     font-size: 20px;
     font-weight: bolder;
+    text-align: center;
 }
 
 .planta_estado_selecionada_controles-avazados{
@@ -273,4 +279,12 @@
 }
 .planta_carusel-informativo-imagenes{
     width: 100%;
+}
+
+@media only screen and (min-width:768px){
+
+    .planta_estado_selecionada{
+        width: 70%;
+        margin: 10px auto;
+    }
 }

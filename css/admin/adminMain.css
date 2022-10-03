@@ -265,13 +265,13 @@
 .planta_carusel-informativo_control{
     display: flex;
     flex-direction: row;
-    width: 100%;
     color: black;
     font-family: 'Urbanist', sans-serif;
     font-weight: bolder;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 30%;
+    margin: 10px auto;
+    text-align: center;
 
 }
 .planta_carusel-informativo_control_siguiente,.planta_carusel-informativo_control_atras{
@@ -281,7 +281,7 @@
     border-radius: 2px;
 }
 .planta_carusel-informativo_control_posicion{
-    font-size: 26px;
+    font-size: 23px;
     margin-right: 10px;
     margin-left: 10px;
 }

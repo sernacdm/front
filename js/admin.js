@@ -83,11 +83,18 @@ async function plantaUsuario(url){
     .then((data3)=>{
         infoUsuarioPlanta = data3.data.processes
         console.log(data3.data.processes)
+        
+        infoUsuarioPlanta.forEach(element=>{
+            if(element.germination==true){
+                console.log("tenemos  uno")
+            }
+        })
+
         template2 = ""
         infoUsuarioPlanta.forEach(element=>{
 
             plantaTips.innerHTML += `<div class="swiper-slide">
-                <p>${element.plant.nutritionalContribution}</p>   
+                <p class="planta_tips_parrafo">${element.plant.nutritionalContribution}</p>   
             </div>`
             plantaSelecionada.innerHTML += `<div class="swiper-slide">
                 <h2 class="planta_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
@@ -95,6 +102,13 @@ async function plantaUsuario(url){
                 ${element.plant.generalInformation}
                 </p>
             </div>` 
+
+
+            /* if(element.germination==true){
+                console.log("tenemos  uno")
+            }
+           */
+
             plantaEstadoSelecionadaActual.innerHTML += `<div class="planta_estado_selecionada_paso swiper-slide">
                 <h2 class="planta_estado_selecionada_titulo titulos-movil-700">${element.plant.name}</h2>
                 <div class="planta_estado_selecionada_contenedor">
@@ -112,7 +126,7 @@ async function plantaUsuario(url){
                         </div>
                     </div>
                     <div class="planta_estado_selecionada_textos">
-                        <h3 class="planta_estado_selecionada_textos_titulo">Conseguir la semilla</h3>
+                        <h3 class="planta_estado_selecionada_textos_titulo">titulo</h3>
                         <p class="planta_estado_selecionada_textos_parrafo">Amet minim mollit non deserunt ullamco est.</p>
                     </div>
                 </div>
@@ -220,3 +234,14 @@ setTimeout(()=>{
     
 },5000)
 
+
+var swiper4 = new Swiper(".mySwiper4", {
+    pagination: {
+      el: ".planta_carusel-informativo_control_posicion",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".planta_carusel-informativo_control_siguiente",
+      prevEl: ".planta_carusel-informativo_control_atras",
+    },
+});

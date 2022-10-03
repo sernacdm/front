@@ -8,7 +8,8 @@ const btnPlantaEstadoSelecionadaMas = document.querySelector(".planta_estado_sel
 const modalAgregarPlanta = document.querySelector(".modal_agregar_planta")
 const btnModalAgregarPlantaConfirmar = document.querySelector("#modal_agregar_planta_btn_confirmar");
 const btnModalAgregarPlantaCancelar = document.querySelector('#modal_agregar_planta_btn_cancelar');
-
+const modalAgregarPlantaContenedorPlantas = document.querySelector('.modal_agregar_plantacontenedor_plantas')
+let plantas
 
 
 
@@ -18,7 +19,7 @@ btnModalAgregarPlantaCancelar.addEventListener("click",()=>{
     btnPlantaEstadoSelecionadaVer.classList.toggle('reset-transform')
     btnPlantaEstadoSelecionadaQuitar.classList.toggle('reset-transform')
     btnPlantaEstadoSelecionadaMas.classList.toggle('reset-transform')
-    
+
 })
 
 
@@ -72,9 +73,25 @@ async function listaPlantas(){
     .then((response) => response.json())
     .then((data)=> {
         console.log(data.data)
+        plantas = data.data
+        console.log(plantas.length)
+        template = ""
+        plantas.forEach(element => {
+            template = template + `<div class="modal_agregar_plantacontenedor_planta">
+                <img class="modal_agregar_planta_imagen" src="https://loremflickr.com/320/240/dog" alt="">
+                <label class="modal_agregar_planta_texto">${element['name']}</label>
+                <input type="checkbox" name="" id="" value="${element['id']}">
+            </div>`
+        });
+
+
+        modalAgregarPlantaContenedorPlantas.innerHTML = template
+        /* modalAgregarPlantaContenedorPlantas.innerHTML =;   */
     })
     .catch((err) => console.log(err))
 
 }
 
 listaPlantas()
+
+

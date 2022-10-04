@@ -107,6 +107,11 @@ async function listaEliminarPlanta(){
 
 listaEliminarPlanta()
 
+btnModalEliminarPlantaConfirmar.addEventListener("click",()=>{
+    window.onscroll = "";
+    modalEliminarPlanta.classList.toggle('mostrarf')
+    location.reload(true)
+})
 
 btnModalElimarPlanta.addEventListener("click",()=>{
     modalEliminarPlanta.classList.toggle('mostrarf')

@@ -1,10 +1,10 @@
 const nombreUsuario = document.querySelector("#nombreUsuario") 
 const linkCerrarSesion = document.querySelector("#linkCerrarSesion")
 
-const urlListaPlantas = "http://localhost:8080/api/v1/Plant/Plants"
-const urlIdUsuario= "http://localhost:8080/api/v1/User/UserByUsername/"+localStorage.getItem('userName')
-const urlAddPlanta = "http://localhost:8080/api/v1/Process/AddProcess"
-const urlEliminarPlanta ="http://localhost:8080/api/v1/Process/DeleteProcess/"
+const urlListaPlantas = "https://fathomless-taiga-12091.herokuapp.com/api/v1/Plant/Plants"
+const urlIdUsuario= "https://fathomless-taiga-12091.herokuapp.com/api/v1/User/UserByUsername/"+localStorage.getItem('userName')
+const urlAddPlanta = "https://fathomless-taiga-12091.herokuapp.com/api/v1/Process/AddProcess"
+const urlEliminarPlanta ="https://fathomless-taiga-12091.herokuapp.com/api/v1/Process/DeleteProcess/"
 
 
 const btnPlantaEstadoSelecionadaOpciones = document.querySelector(".planta_estado_selecionada_opciones")
@@ -58,7 +58,7 @@ async function eliminarElemnto(url){
 
 async function listaEliminarPlanta(){
    
-    await fetch("http://localhost:8080/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'),{
+    await fetch("https://fathomless-taiga-12091.herokuapp.com/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'),{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -334,7 +334,7 @@ async function plantasUsuario(){
     .then((response) => response.json())
     .then((data2)=>{
         idUsuario = data2.data.id
-        let urlPlantasUsuario = "http://localhost:8080/api/v1/Process/ProcessesByUser/"+idUsuario
+        let urlPlantasUsuario = "https://fathomless-taiga-12091.herokuapp.com/api/v1/Process/ProcessesByUser/"+idUsuario
        /*  console.log(urlPlantasUsuario) */
       
         plantaUsuario(urlPlantasUsuario)
@@ -391,7 +391,7 @@ async function listaPlantas(){
         })
 
          
-        plantasConsultar( "http://localhost:8080/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'))
+        plantasConsultar( "https://fathomless-taiga-12091.herokuapp.com/api/v1/Process/ProcessesByUser/"+localStorage.getItem('userId'))
 
         /* modalAgregarPlantaContenedorPlantas.innerHTML =;   */
     })

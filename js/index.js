@@ -10,7 +10,7 @@ const inputEmail = document.querySelector('#email')
 const inputUsername = document.querySelector('#username')
 const inputPassword = document.querySelector("#password") ;
 const inputRePassword = document.querySelector("#rePassword") ;
-const urlAddUser =  "http://localhost:8080/api/v1/User/AddUser"
+const urlAddUser =  "https://fathomless-taiga-12091.herokuapp.com/api/v1/User/AddUser"
 
 
 

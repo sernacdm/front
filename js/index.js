@@ -1,5 +1,6 @@
 const btnCrearCuenta = document.querySelector('#btnCrearCuenta')
 const modalCrearCuenta = document.querySelector('.modal_crear-cuenta')
+const linkMenuMovilCrearCuenta = document.querySelector('#menu-movil_link_crear-cuenta')
 const btnCrearCuentaModal = document.querySelector('.modal_crear-cuenta_btn_crear-cuenta ') 
 const btnCancelarCrearCuentaModal = document.querySelector('.modal_crear-cuenta_btn_cancelar');
 const linkModalCrearCuentaAtras = document.querySelector(".modal_crear-cuenta_volver")
@@ -9,8 +10,18 @@ const inputEmail = document.querySelector('#email')
 const inputUsername = document.querySelector('#username')
 const inputPassword = document.querySelector("#password") ;
 const inputRePassword = document.querySelector("#rePassword") ;
-const urlAddUser =  "http://localhost:8080/api/v1/User/AddUser"
+const urlAddUser =  "https://fathomless-taiga-12091.herokuapp.com/api/v1/User/AddUser"
 
+
+
+linkMenuMovilCrearCuenta.addEventListener("click",()=>{
+    if(localStorage.getItem('userName')){
+        window.location.href="admin.html"
+    }
+    modalCrearCuenta.classList.toggle('mostrarf')
+    window.onscroll = "";
+    fondoMenu.classList.toggle('mostrarf')
+})
 
 btnCrearCuenta.addEventListener("click", ()=>{
     console.log("vamos a crear cuenta")
@@ -47,6 +58,7 @@ btnCrearCuentaModal.addEventListener("click",()=>{
         inputPassword.placeholder="las contraseñas no conciden";
         inputRePassword.classList.toggle('error-input-movil')
         inputRePassword.placeholder="las contraseñas no conciden";
+        alert("las contraseñas no conciden")
 
     }else{
         

@@ -38,9 +38,10 @@
 .planta_tips_contenedor_titulo{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: var(--color-verde-oscuro-1) solid 2px;
+    
 }
 .planta_tips_titulo{
     text-transform: uppercase;
@@ -80,6 +81,7 @@
 
 /** planta_estado_selecionada **/
 
+
 .planta_estado_selecionada{
     margin: 20px 2.5%;
     border: var(--color-verde-oscuro-1) solid 1px;
@@ -87,7 +89,19 @@
     box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
+    width: 95%;
     position: relative;
+    overflow: hidden;
+}
+.planta_estado_selecionada_contenedor{
+    display: flex;
+    flex-direction: row;
+}
+.planta_estado_selecionada_actual{
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: row;
 }
 .planta_estado_selecionada_titulo{
     font-size: 40px;
@@ -95,9 +109,10 @@
 }
 .planta_estado_selecionada_paso{
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     align-self: center;
+    width: 100%;
     height: 100%;
 }
 
@@ -111,8 +126,13 @@
     border-radius: 5px;
     letter-spacing: 1px;
     margin: 0;
+    height: fit-content;
 }
+.planta_estado_selecionada_textos{
+    display: flex;
+    flex-direction: column;
 
+}
 .planta_estado_selecionada_textos_titulo{
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;
@@ -180,6 +200,7 @@
     flex-direction: row;
     margin-bottom: 20px;
     margin-left: 20px;
+    width: 25%;
 }
 .planta_estado_selecionada_control_atras,.planta_estado_selecionada_control_siguiente{
     color: var(--color-verde-oscuro-1);
@@ -191,6 +212,7 @@
     color: var(--color-verde-oscuro-1);
     font-size: 20px;
     font-weight: bolder;
+    text-align: center;
 }
 
 .planta_estado_selecionada_controles-avazados{
@@ -211,7 +233,7 @@
 .icon-opciones-admin{
     border-radius: 50%;
     border:none;
-    font-size: 45px !important;
+    font-size: 35px !important;
     margin-bottom: 15px;
 }
 
@@ -219,36 +241,37 @@
     background-color: var(--color-text-nuestro-equipo-azul);
     color: white;
     z-index: 2;
+    transform: scale(1.05);
 }
 
 .planta_estado_selecionada_ver{
     background-color: var(--color-negro-claro-2);
     color: white;
-    transform: translateY(68px);
+    transform: translateY(58px);
     z-index: 1;
 }
 .planta_estado_selecionada_quitar{
     background-color: var(--color-rojo);
     color: white;
-    transform: translateY(137px);
+    transform: translateY(115px);
     z-index: 1;
 }
 .planta_estado_selecionada_mas{
     background-color: var(--color-planta-selecionada-fondo);
     color: white;
     z-index: 1;
-    transform: translateY(206px);
+    transform: translateY(172px);
 }
 .planta_carusel-informativo_control{
     display: flex;
     flex-direction: row;
-    width: 100%;
     color: black;
     font-family: 'Urbanist', sans-serif;
     font-weight: bolder;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 30%;
+    margin: 10px auto;
+    text-align: center;
 
 }
 .planta_carusel-informativo_control_siguiente,.planta_carusel-informativo_control_atras{
@@ -258,13 +281,26 @@
     border-radius: 2px;
 }
 .planta_carusel-informativo_control_posicion{
-    font-size: 26px;
+    font-size: 23px;
     margin-right: 10px;
     margin-left: 10px;
 }
 .planta_carusel-informativo,.planta_carusel_imagen{
     width: 100%;
+    max-height: 420px;
+    margin-bottom:10px;
 }
 .planta_carusel-informativo-imagenes{
     width: 100%;
+}
+.planta_selecionada_imagen{
+    display: none;
+}
+.planta_contenedor_varios{
+    display: flex;
+    flex-direction: column;
+}
+@media only screen and (min-width:768px){
+
+    
 }

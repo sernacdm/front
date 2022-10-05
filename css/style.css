@@ -102,3 +102,8 @@ html{
 .error-input-movil{
     border: red solid 2px;
 }
+
+.reset-transform{
+    transform: translateY(0px) !important;
+    transition: all 1s;
+}
